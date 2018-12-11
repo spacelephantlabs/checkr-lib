@@ -1,0 +1,79 @@
+{
+  "name": "checkr-lib",
+  "version": "0.0.5",
+  "description": "javascript library to check digital identifiers",
+  "main": "./dist/checkr-lib.js",
+  "types": "./dist/checkr-lib.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "./node_modules/.bin/tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:prod": "yarn test --coverage --no-cache",
+    "pretty": "prettier --config ./prettier.config.js \"{src,test}/**/*.ts\"",
+    "prettify": "yarn pretty --write",
+    "lint": "tslint -c ./tslint.json -t codeFrame \"{src,test}/**/*.ts\"",
+    "clean": "rm -rf ./dist",
+    "cleanAll": "rm -rf ./dist ./node_modules",
+    "check-no-modifications": "test -z \"$(git status --porcelain)\" || (echo \"/!\\ Git workspace tampered after build!! $(git status --porcelain)\" && exit 1)"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testURL": "http://localhost",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/",
+      "/src/types/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js,tsx,jsx}"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spacelephantlabs/checkr-lib.git"
+  },
+  "author": "Fabien TREGUER <fabien.treguer@spacelephant.org> http://spacelephant.org#fabien",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "10"
+  },
+  "bugs": {
+    "url": "https://github.com/spacelephantlabs/checkr-lib/issues"
+  },
+  "homepage": "https://github.com/spacelephantlabs/checkr-lib#readme",
+  "dependencies": {
+    "arkjs": "^0.2.1",
+    "ibantools": "^2.0.0",
+    "libphonenumber-js": "^1.6.7",
+    "wallet-address-validator": "^0.2.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^10.0.3",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.4",
+    "nodemon": "^1.17.3",
+    "prettier": "1.12.1",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.4",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.12.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.8.1"
+  }
+}
