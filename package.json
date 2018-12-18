@@ -50,7 +50,7 @@
   "author": "Fabien TREGUER <fabien.treguer@spacelephant.org> http://spacelephant.org#fabien",
   "license": "Apache-2.0",
   "engines": {
-    "node": "10"
+    "node": ">=8"
   },
   "bugs": {
     "url": "https://github.com/spacelephantlabs/checkr-lib/issues"
